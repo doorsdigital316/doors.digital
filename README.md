@@ -1,0 +1,429 @@
+import React, { useState } from 'react';
+import { Button } from "/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "/components/ui/card";
+
+const DoorsDigitalLanding = () => {
+  const [activeSection, setActiveSection] = useState('inicio');
+
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground font-sans">
+      {/* Header */}
+      <header className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b border-border z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary rounded-lg"></div>
+              <h1 className="text-xl font-bold text-primary">Doors Digital</h1>
+            </div>
+            
+            <nav className="hidden md:flex space-x-6">
+              <button 
+                onClick={() => scrollToSection('inicio')}
+                className={`text-sm font-medium hover:text-primary transition-colors ${
+                  activeSection === 'inicio' ? 'text-primary' : 'text-foreground'
+                }`}
+              >
+                Inicio
+              </button>
+              <button 
+                onClick={() => scrollToSection('servicios')}
+                className={`text-sm font-medium hover:text-primary transition-colors ${
+                  activeSection === 'servicios' ? 'text-primary' : 'text-foreground'
+                }`}
+              >
+                Servicios
+              </button>
+              <button 
+                onClick={() => scrollToSection('sobre-mi')}
+                className={`text-sm font-medium hover:text-primary transition-colors ${
+                  activeSection === 'sobre-mi' ? 'text-primary' : 'text-foreground'
+                }`}
+              >
+                Sobre Mí
+              </button>
+              <button 
+                onClick={() => scrollToSection('contacto')}
+                className={`text-sm font-medium hover:text-primary transition-colors ${
+                  activeSection === 'contacto' ? 'text-primary' : 'text-foreground'
+                }`}
+              >
+                Contacto
+              </button>
+            </nav>
+
+            <Button className="md:hidden" variant="ghost" size="icon">
+              <span className="sr-only">Abrir menú</span>
+              <div className="w-5 h-5 flex flex-col justify-between">
+                <div className="w-full h-0.5 bg-foreground"></div>
+                <div className="w-full h-0.5 bg-foreground"></div>
+                <div className="w-full h-0.5 bg-foreground"></div>
+              </div>
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section id="inicio" className="pt-32 pb-20 px-4">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+            Marketing Digital <span className="text-primary">360°</span>
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Potenciamos tu presencia digital con estrategias integrales que conectan con tu audiencia y generan resultados tangibles.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-primary hover:bg-primary/90">
+              Comenzar Proyecto
+            </Button>
+            <Button size="lg" variant="outline">
+              Ver Servicios
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="servicios" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h3 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
+            Nuestros Servicios
+          </h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Marketing Digital Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-6 h-6 bg-primary rounded"></div>
+                </div>
+                <CardTitle className="text-foreground">Marketing Digital</CardTitle>
+                <CardDescription>
+                  Estrategias completas para posicionar tu marca en el mundo digital
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Redes Sociales</li>
+                  <li>• Email Marketing</li>
+                  <li>• Contenido Estratégico</li>
+                  <li>• Analytics y Métricas</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* SEO/SEM Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-6 h-6 bg-primary rounded-full"></div>
+                </div>
+                <CardTitle className="text-foreground">SEO & SEM</CardTitle>
+                <CardDescription>
+                  Posicionamiento orgánico y publicidad pagada para maximizar visibilidad
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Optimización SEO</li>
+                  <li>• Google Ads</li>
+                  <li>• Meta Ads</li>
+                  <li>• Remarketing</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Asesorías Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-6 h-6 bg-primary" style={{clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'}}></div>
+                </div>
+                <CardTitle className="text-foreground">Asesorías</CardTitle>
+                <CardDescription>
+                  Consultoría personalizada para tu proyecto digital
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Estrategia Digital</li>
+                  <li>• Auditoría Web</li>
+                  <li>• Plan de Marketing</li>
+                  <li>• Mentoría Personalizada</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Diseño Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-6 h-6 bg-primary" style={{clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'}}></div>
+                </div>
+                <CardTitle className="text-foreground">Diseño</CardTitle>
+                <CardDescription>
+                  Soluciones visuales que comunican y conectan con tu audiencia
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Diseño Web</li>
+                  <li>• UI/UX</li>
+                  <li>• Gráfica Digital</li>
+                  <li>• Materiales Impresos</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Branding Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-6 h-6 bg-primary" style={{clipPath: 'circle(50% at 50% 50%)'}}></div>
+                </div>
+                <CardTitle className="text-foreground">Branding</CardTitle>
+                <CardDescription>
+                  Construcción de identidad de marca sólida y memorable
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Identidad Visual</li>
+                  <li>• Naming</li>
+                  <li>• Manual de Marca</li>
+                  <li>• Estrategia de Branding</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Marketing 360 Card */}
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-6 h-6 bg-primary" style={{transform: 'rotate(45deg)'}}></div>
+                </div>
+                <CardTitle className="text-foreground">Marketing 360°</CardTitle>
+                <CardDescription>
+                  Soluciones integrales para todos los aspectos de tu marketing
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Estrategia Integral</li>
+                  <li>• Implementación Completa</li>
+                  <li>• Gestión Continua</li>
+                  <li>• Resultados Medibles</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="sobre-mi" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <img 
+                src="https://placeholder-image-service.onrender.com/image/400x500?prompt=Professional digital marketing consultant working on laptop with analytics dashboard&id=32a7de1e-5377-48b0-9853-fd87fe6a05c7" 
+                alt="Consultor de marketing digital profesional trabajando en laptop con dashboard de analytics"
+                className="rounded-lg shadow-lg w-full h-auto"
+              />
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold mb-6 text-foreground">Sobre Doors Digital</h3>
+              <p className="text-muted-foreground mb-6">
+                Somos especialistas en transformar ideas en estrategias digitales exitosas. 
+                Con años de experiencia en el sector, ayudamos a negocios a crecer y destacar 
+                en el mundo digital mediante soluciones personalizadas y resultados medibles.
+              </p>
+              <p className="text-muted-foreground mb-8">
+                Nuestro enfoque 360° garantiza que todos los aspectos de tu marketing digital 
+                estén alineados y trabajando juntos para alcanzar tus objetivos comerciales.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">50+</div>
+                  <div className="text-sm text-muted-foreground">Clientes Satisfechos</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">100+</div>
+                  <div className="text-sm text-muted-foreground">Proyectos Completados</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">3+</div>
+                  <div className="text-sm text-muted-foreground">Años de Experiencia</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">360°</div>
+                  <div className="text-sm text-muted-foreground">Enfoque Integral</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contacto" className="py-20 bg-primary/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold mb-4 text-foreground">¿Listo para comenzar?</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Contactanos para una consultoría gratuita y descubre cómo podemos ayudar 
+              a tu negocio a crecer en el mundo digital.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 bg-primary rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Email</h4>
+                  <p className="text-muted-foreground">info@doorsdigital.com</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 bg-primary" style={{clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'}}></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">WhatsApp</h4>
+                  <p className="text-muted-foreground">+54 9 11 1234-5678</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 bg-primary" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Ubicación</h4>
+                  <p className="text-muted-foreground">Buenos Aires, Argentina</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg p-6 shadow-lg">
+              <h4 className="text-xl font-semibold mb-4 text-foreground">Envíanos un mensaje</h4>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Nombre</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Tu nombre completo"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Email</label>
+                  <input 
+                    type="email" 
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Mensaje</label>
+                  <textarea 
+                    rows={4}
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Cuéntanos sobre tu proyecto..."
+                  ></textarea>
+                </div>
+                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                  Enviar Mensaje
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-muted py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 bg-primary rounded-lg"></div>
+                <h4 className="text-lg font-bold text-foreground">Doors Digital</h4>
+              </div>
+              <p className="text-muted-foreground text-sm">
+                Soluciones integrales de marketing digital para hacer crecer tu negocio en el mundo digital.
+              </p>
+            </div>
+            
+            <div>
+              <h5 className="font-semibold text-foreground mb-4">Servicios</h5>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>Marketing Digital</li>
+                <li>SEO & SEM</li>
+                <li>Asesorías</li>
+                <li>Diseño</li>
+                <li>Branding</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h5 className="font-semibold text-foreground mb-4">Conectemos</h5>
+              <div className="flex space-x-4">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-primary rounded"></div>
+                </div>
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-primary rounded-full"></div>
+                </div>
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-primary" style={{clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'}}></div>
+                </div>
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-primary" style={{clipPath: 'circle(50% at 50% 50%)'}}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-border mt-8 pt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              © 2024 Doors Digital. Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* WhatsApp Floating Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Button 
+          className="rounded-full w-14 h-14 bg-green-600 hover:bg-green-700 shadow-lg"
+          onClick={() => window.open('https://wa.me/5491112345678', '_blank')}
+        >
+          <span className="sr-only">Contactar por WhatsApp</span>
+          <div className="w-6 h-6 text-white">
+            <div style={{
+              width: '24px',
+              height: '24px',
+              background: 'currentColor',
+              clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+            }}></div>
+          </div>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default DoorsDigitalLanding;
